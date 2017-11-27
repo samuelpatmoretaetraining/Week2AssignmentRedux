@@ -5,6 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
+import com.muelpatmore.week2assignmentredux.data.messages.ChangeGenre;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -18,11 +24,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mNavigationFragment = new NavigationFragment();
+        mTrackListFragment = new TrackListFragment();
 
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.beginTransaction()
-                .add(R.id.flNavigation, mNavigationFragment);
+                .add(R.id.flNavigation, mNavigationFragment)
+                .commit();
         mFragmentManager.beginTransaction()
-                .add(R.id.flContent, mTrackListFragment);
+                .add(R.id.flContent, mTrackListFragment)
+                .commit();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(
+            ChangeGenre event) {/* Do something */};
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }
