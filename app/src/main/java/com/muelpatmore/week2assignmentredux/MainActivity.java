@@ -3,9 +3,9 @@ package com.muelpatmore.week2assignmentredux;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import com.muelpatmore.week2assignmentredux.data.messages.ChangeGenre;
+import com.muelpatmore.week2assignmentredux.ui.tracklist.TrackListView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager mFragmentManager;
     private NavigationFragment mNavigationFragment;
-    private TrackListFragment mTrackListFragment;
+    private TrackListView mTrackListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mNavigationFragment = new NavigationFragment();
-        mTrackListFragment = new TrackListFragment();
+        mTrackListView = new TrackListView();
 
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.beginTransaction()
                 .add(R.id.flNavigation, mNavigationFragment)
                 .commit();
         mFragmentManager.beginTransaction()
-                .add(R.id.flContent, mTrackListFragment)
+                .add(R.id.flContent, mTrackListView)
                 .commit();
     }
 

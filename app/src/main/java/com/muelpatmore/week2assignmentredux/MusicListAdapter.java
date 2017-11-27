@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.muelpatmore.week2assignmentredux.data.network.models.SongModel;
+import com.muelpatmore.week2assignmentredux.data.ISong;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -24,11 +24,11 @@ import java.util.ArrayList;
 public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.SongItemViewHolder>{
     private static final String TAG= "MusicListAdapter";
 
-    private ArrayList<SongModel> songList;
+    private ArrayList<ISong> songList;
     private int row_song;
     private Context applicationContext;
 
-    public MusicListAdapter(ArrayList<SongModel> songList, int row_song, Context applicationContext) {
+    public MusicListAdapter(ArrayList<ISong> songList, int row_song, Context applicationContext) {
         this.songList = songList;
         this.row_song = row_song;
         this.applicationContext = applicationContext;
@@ -48,7 +48,7 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.Song
     @Override
     public void onBindViewHolder(SongItemViewHolder holder, final int position) {
         Log.i(TAG, "Creating view "+position);
-        final SongModel song = songList.get(position);
+        final ISong song = songList.get(position);
         holder.tvTrack.setText(song.getTrackName());
         holder.tvArtist.setText(song.getArtistName());
         holder.tvPrice.setText(song.getTrackPrice().toString());
@@ -71,7 +71,6 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.Song
                 }
             }
         });
-
     }
 
     @Override
