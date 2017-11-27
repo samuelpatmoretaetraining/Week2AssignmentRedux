@@ -1,10 +1,7 @@
 package com.muelpatmore.week2assignmentredux.ui.tracklist;
 
-import android.provider.SyncStateContract;
-
 import com.muelpatmore.week2assignmentredux.data.AppDataManager;
 import com.muelpatmore.week2assignmentredux.data.IDataManager;
-import com.muelpatmore.week2assignmentredux.data.messages.DataReadyForRecyclerView;
 import com.muelpatmore.week2assignmentredux.ui.base.BasePresenter;
 import com.muelpatmore.week2assignmentredux.ui.base.MvpView;
 import com.muelpatmore.week2assignmentredux.ui.utils.AppConstants;
@@ -43,7 +40,7 @@ public class TrackListPresenter<V extends TrackListMvpView> extends BasePresente
 
     @Override
     public void requestNewData() {
-        getDataManager().getData(genre);
+        //getDataManager().getData(genre);
     }
 
     @Override
@@ -51,21 +48,10 @@ public class TrackListPresenter<V extends TrackListMvpView> extends BasePresente
         this.genre = genre;
     }
 
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(DataReadyForRecyclerView event) {
-
-    }
-
-
-
-
     @Override
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
     }
-
-
 
     @Override
     public void onDetach() {

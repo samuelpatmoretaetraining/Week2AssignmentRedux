@@ -1,5 +1,6 @@
 package com.muelpatmore.week2assignmentredux.data.realm;
 
+import com.muelpatmore.week2assignmentredux.data.ISong;
 import com.muelpatmore.week2assignmentredux.data.network.models.SongModel;
 import com.muelpatmore.week2assignmentredux.data.RealmSong;
 

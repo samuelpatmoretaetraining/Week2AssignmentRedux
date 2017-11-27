@@ -9,6 +9,9 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.muelpatmore.week2assignmentredux.MyMusicApp;
 import com.muelpatmore.week2assignmentredux.data.constants.API_Constants;
 
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+
 import java.io.File;
 
 import okhttp3.Cache;
@@ -39,7 +42,6 @@ public class ConnectionService {
      * spesified in the RequestInterface interface class.
      */
     public static RequestInterface getConnection(){
-
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 

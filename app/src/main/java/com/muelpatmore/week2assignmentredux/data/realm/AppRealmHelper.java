@@ -30,8 +30,8 @@ public class AppRealmHelper implements IRealmHelper {
      * Constructor for AppRealmHelper
      */
     public AppRealmHelper() {
-        Realm.init(MyMusicApp.getContext());
-        this.mRealm = Realm.getDefaultInstance();
+//        Realm.init(MyMusicApp.getContext());
+//        this.mRealm = Realm.getDefaultInstance();
     }
     /**
      * Get time since last recorded upload of data to the database. Returns zero if no such data exists.
@@ -75,9 +75,6 @@ public class AppRealmHelper implements IRealmHelper {
                 .where(RealmSong.class)
                 .equalTo("genre", genre)
                 .findAll();
-//        for(RealmSong s : realmSongList) {
-//            songList.add(s);
-//        }
         songList.addAll(realmSongList);
         return songList;
     }

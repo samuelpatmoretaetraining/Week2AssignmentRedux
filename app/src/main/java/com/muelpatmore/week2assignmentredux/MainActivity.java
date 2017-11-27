@@ -4,7 +4,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.muelpatmore.week2assignmentredux.data.messages.ChangeGenre;
 import com.muelpatmore.week2assignmentredux.ui.tracklist.TrackListView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -36,19 +35,5 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(
-            ChangeGenre event) {/* Do something */};
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
 }
